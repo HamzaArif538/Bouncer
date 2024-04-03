@@ -1,0 +1,118 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+.contactcontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Quicksand", sans-serif;
+    padding: 0px 20px;
+}
+
+.pagetop{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--color-line);
+    margin-bottom: 20px;
+}
+
+.pagetop .pageinfolight, .pageinfoicon{
+    margin-right: 10px;
+}
+
+.pagetop .pageinfolight{
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: 0.4s;
+}
+
+.pageinfolight:hover{
+    color: rgb(247, 195, 22);
+}
+
+.pagetop i, .pageinfoaddress{
+    color: var(--color-font);
+}
+
+
+.contactcontmain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.contactcontmain .contactmainhead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contactcontmain .contactmainhead .contactheadtop{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}       
+
+.contactmainhead .contactheadbot{
+    color: var(--color-font);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+
+
+
+.contactinforight .contactrightform{
+    margin: 0 30px;
+}
+
+.contactrightform p{
+    border: 2px solid var(--color-line);
+    height: 20px;
+    padding: 12px 18px;
+    background-color: #fff;
+    color: var(--color-font);
+}
+
+.contactrightform input{
+    color: var(--color-font);
+    padding: 0 12px;
+    border: 1px solid var(--color-line);
+    width: 35vw;
+    height: 60px;
+    border-radius: 15px;
+}
+
+.contactrightform textarea{
+    color: var(--color-font);
+    padding: 12px;
+    border: 1px solid var(--color-line);
+    width: 35vw;
+    border-radius: 15px;
+}
+
+.contactrightform button {
+    padding: 16px 35px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #253D4E;
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 15px;
+    border: none;
+}
+
+.contactrightform button:hover{
+    background-color: var(--color-primary);
+}
+
+.contactrightform .form-group{
+    margin-bottom: 20px;
+}

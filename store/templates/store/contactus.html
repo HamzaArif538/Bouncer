@@ -1,0 +1,57 @@
+{% extends "store/main.html" %}
+{% load static %}
+
+{% block title %}Bouncers - Contact Us{% endblock title %}
+
+{% block content %}
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+
+<link rel="stylesheet" href="{% static '/css/contactus.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+
+<div class="contactcontainer">
+    <div class="pagetop">
+        <a href='/' class="pageinfolight">
+            Home
+        </a> 
+        <i class="pageinfoicon fa-solid fa-angle-right"></i>
+        <p class="pageinfoaddress">
+            ContactUs
+        </p>
+    </div>
+
+    <div class="contactcontmain">
+        <div class="contactmainhead">
+            <div class="contactheadtop">
+                Drop Us a Line
+            </div>
+            <div class="contactheadbot">
+                Contact Us for any Questions
+            </div>
+        </div>
+        <div class="contactinforight">
+            <div class="contactrightform">
+                {% if success %}
+                    <p>Thank you for your message. We'll get back to you soon.</p>
+                {% else %}
+                    <form method="post" action="{% url 'contactus' %}">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group">
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                        <button type="submit">Send Message</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>
+{% endblock content %}

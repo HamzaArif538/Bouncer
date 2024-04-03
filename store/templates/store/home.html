@@ -1,0 +1,164 @@
+{% extends "store/main.html" %}
+{% load static %}
+
+{% block title %}Bouncers{% endblock title %}
+
+{% block content %}
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+<link rel="stylesheet" href="{% static '/css/home.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+<link rel="stylesheet" href="{% static '/css/aboutus.css' %}">
+<link rel="stylesheet" href="{% static '/css/contactus.css' %}">
+
+<div class="homecontainer">
+    <div class="homecont-banner">
+        <img style="height:400px" src="{% static "/images/banner.png" %}" alt="">
+    </div>
+
+
+    <div class="homecont-category">
+        <h2 class="homecat-title">
+            Top Categories
+        </h2>
+        <div class="homecat-container">
+            <div class="homecat-cont">
+                <div class="homecat-img">
+                    <img src="{% static "/images/loafer.png" %}" alt="">
+                </div>
+                <div class="homecat-info">
+                    <a href='' class="homecat-name">
+                        Loafers
+                    </a>
+                    <div class="homecat-gender">
+                        Men
+                    </div>
+                </div>
+            </div>
+            
+            <div class="homecat-cont">
+                <div class="homecat-img">
+                    <img src="{% static "/images/peshawari.png" %}" alt="">
+                </div>
+                <div class="homecat-info">
+                    <a href='' class="homecat-name">
+                        Peshawari Chappal
+                    </a>
+                    <div class="homecat-gender">
+                        Men
+                    </div>
+                </div>
+            </div>
+            <div class="homecat-cont">
+                <div class="homecat-img">
+                    <img src="{% static "/images/dress-shoes.png" %}" alt="">
+                </div>
+                <div class="homecat-info">
+                    <a href='' class="homecat-name">
+                        Dress Shoes
+                    </a>
+                    <div class="homecat-gender">
+                        Men
+                    </div>
+                </div>
+            </div>
+            <div class="homecat-cont women-bg">
+                <div class="homecat-img">
+                    <img src="{% static "/images/khussa.png" %}" alt="">
+                </div>
+                <div class="homecat-info">
+                    <a href='' class="homecat-name">
+                        Khussa
+                    </a>
+                    <div class="homecat-gender">
+                        Women
+                    </div>
+                </div>
+            </div>
+            <div class="homecat-cont women-bg">
+                <div class="homecat-img">
+                    <img src="{% static "/images/heels.png" %}" alt="">
+                </div>
+                <div class="homecat-info">
+                    <a href='' class="homecat-name">
+                        High Heels
+                    </a>
+                    <div class="homecat-gender">
+                        Women
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="homecont-about">
+        <div class="aboutcontbottom">
+            <div class="bottomaboutteam">
+                <div class="aboutteamleft">
+                    <div class="teamleftcont">
+                        <img src="{% static "/images/bouncers.png" %}" alt="">
+                    </div>
+                </div>
+                <div class="aboutteamright">
+                    <h1 class="teamrighthead">
+                        About Us
+                    </h1>
+                    <div class="teamrightinfo">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing
+                        elit. Ipsum ullam nulla eum accusamus odit cupiditate 
+                        iste quasi sed pariatur impedit recusandae qui, eos 
+                        voluptate neque illo corrupti commodi dolor. Ex nihil 
+                        nulla aliquam perspiciatis odio, ratione corrupti eius 
+                        rerum  <br> <br>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Maxime, sequi ad voluptas adipisci, expedita eos, 
+                        tenetur non deserunt delectus quod laudantium aperiam 
+                        odio excepturi vitae provident?
+                    </div>
+                    <a href='{% url "home" %}' class="teamrightmore">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="homecont-contact">
+        <div class="contactcontmain">
+            <div class="contactmainhead">
+                <div class="contactheadtop">
+                    Drop Us a Line
+                </div>
+                <div class="contactheadbot">
+                    Contact Us for any Questions
+                </div>
+            </div>
+            <div class="contactinforight">
+                <div class="contactrightform">
+                    {% if success %}
+                        <p>Thank you for your message. We'll get back to you soon.</p>
+                    {% else %}
+                        <form method="post" action="{% url 'contactus' %}">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                            <button type="submit">Send Message</button>
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>
+{% endblock content %}

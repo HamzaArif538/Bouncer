@@ -1,0 +1,100 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+
+.homecontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Quicksand", sans-serif;
+    padding: 20px 20px;
+}
+
+
+.homecont-banner{
+    background-color: aqua;
+    border-radius: 30px;
+
+}
+
+.homecont-banner img{
+    width: 100%;
+    border-radius: 30px;
+}
+
+.homecont-category{
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+
+.homecont-category .homecat-title{
+    font-size: 30px;
+}
+
+.homecat-container{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.homecat-container .homecat-cont{
+    border: 1px solid var(--color-line);
+    padding: 20px;
+    border-radius: 10px;
+    margin-left: 20px;
+    width: 100px;
+    /* overflow: hidden; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ECFFEC;
+}
+
+.homecat-container .women-bg{
+    background-color: #FEEFEA;
+}
+
+.homecat-cont:hover{
+    background-color: #fff;
+    border: 1px solid var(--color-primary);
+    transition: 0.4s;
+    box-shadow: 2px 3px 5px 2px rgba(0, 0, 0, 0.144);
+}
+
+.homecat-cont:hover .homecat-name{
+    color: var(--color-primary);
+    transition: 0.4s;
+}
+
+.homecat-cont .homecat-img{
+    height: 40px;
+    overflow: hidden;
+    margin: 10px 0px;
+}
+
+.homecat-img img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.homecat-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.homecat-info .homecat-name{
+    text-decoration: none;
+    text-wrap: nowrap;
+    overflow: hidden;
+    color: black;
+    font-size: 15px;
+}
+
+.homecat-info .homecat-gender{
+    color: var(--color-font);
+    font-size: 14px;
+}
+

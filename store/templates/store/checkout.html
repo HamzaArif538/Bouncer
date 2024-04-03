@@ -1,0 +1,209 @@
+{% load static %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static '/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+
+<style>
+    .hidden{
+        display: none !important;
+    }
+</style>
+
+<div class="checkoutcontainer">
+    <div class="checkoutcontleft">
+        <div class="checkoutlefthead">
+            <a href="{% url "home" %}" class='checkouthead-logo'>
+                <img style='height:65px' src="{% static "/images/bouncers.png" %}" alt="">
+            </a>
+        </div>
+        <div class="checkoutleftmain" id='form-wrapper'>
+            <form action="" id='form' class="checkout-form">
+                {% csrf_token %}
+                <div class="checkoutforminputs" id='user-info'>
+                    <input class='checkoutinput ' type="name" placeholder='Name' name='name'>
+                    <input class='checkoutinput ' type="tel" placeholder='Phone No' name='phone'>
+                    <input class='checkoutinput ' type="email" name="email" placeholder='Email'>
+                </div>
+                <div class="checkoutforminputs" id='shipping-info'>
+                    <input class='checkoutinput ' type="text" placeholder='State' name='state'>
+                    <input class='checkoutinput checkoutinput-address ' type="text" placeholder='Address' name='address'>
+                    <input class='checkoutinput ' type="text" placeholder='City' name='city'>
+                    <input class='checkoutinput ' type="text" placeholder='Zip Code' name='zipcode'>
+                </div>
+                <div class="checkoutformbtn">
+                    <a class="checkoutbackcart" href="{% url "cart" %}"&#x2190 >
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                        <p>Back to Cart</p>
+                    </a>
+                    <input id='form-button' class='checkoutcontbutton' type="submit" value="Continue">
+                </div>
+            </form>
+        </div>
+        <div class="checkoutleftpayment hidden" id='payment-info'>
+            <small>Paypal Options</small>
+            <button id="make-payment">Make Payment</button>
+        </div>
+    </div>
+    <div class="checkoutcontright">
+        <div class="checkoutrighthead">
+            <p class="checkouthead-product">
+                Order Summary:
+            </p>
+        </div>
+        <div class="checkoutright-items">
+            {% for item in items %}
+            <div class="checkoutrightitems-pro">
+                <div class="checkoutright-start">
+                    <div class="checkoutright-first">
+                        <div class="checkoutitemimg">
+                            <img  src="{{item.product.imageURL}}" alt="">
+                        </div>
+                        <div class="checkoutright-quantity">
+                            {{item.quantity}}
+                        </div>
+                    </div>
+                    <div class="checkoutrightpro-info">
+                        <div class="checkoutrightinfo-name">
+                            {{item.product.name}}
+                        </div>
+                        <div class="checkoutrightinfo-info">
+                            <span class="info-size">7 /</span>
+                            <span class="info-color">{{item.product.color}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="checkoutright-end">
+                    <div class="checkoutright-price">
+                        £<span class="checkoutprice-price">{{item.product.price}} </span>
+                    </div>
+                </div>  
+            </div>
+            {% endfor %}
+            <div class="checkoutrightitems-total">
+                <div class="checkoutrighttotal-head">
+                    Total
+                </div>
+                <div class="checkoutrighttotal-main">
+                    £{{order.get_cart_total}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type='text/javascript'>
+    var isAuthenticated = {% if request.user.is_authenticated %} true {% else %} false {% endif %};
+    var user = isAuthenticated ? 'AuthenticatedUser' : 'AnonymousUser';
+    {% comment %} var user = '{{request.user}}' {% endcomment %}
+    var shipping = '{{order.shipping}}'
+    var total = '{{ order.get_cart_total|floatformat:2 }}'
+
+    // fetching from home.html
+    function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    const csrftoken = getToken('csrftoken');
+
+    if(shipping == 'False'){
+        document.getElementById('shipping-info').innerHTML = ''
+    }
+
+    if (user != 'AnonymousUser'){
+        document.getElementById('user-info').innerHTML = ''
+        console.log('user is again logged')
+    }
+
+    if (shipping == 'False' && user != 'AnonymousUser'){
+        document.getElementById('form-wrapper').classList.add('hidden')
+
+        document.getElementById('payment-info').classList.remove('hidden')
+    }
+    
+    var form = document.getElementById('form')
+    {% comment %} csrftoken = form.getElementsByTagName("input")[0].value
+    console.log("NewToken:", form.getElementsByTagName("input")[0].value) {% endcomment %}
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        console.log('Form Submitted...')
+        document.getElementById('form-button').classList.add('hidden')
+        document.getElementById('payment-info').classList.remove('hidden')
+    })
+
+    document.getElementById('make-payment').addEventListener('click', function(e){
+        // e.preventDefault() 
+        submitFormData()
+    })
+
+    function submitFormData(){
+        console.log('Payment button Clicked')
+
+        var userFormData = {
+            'name':null,
+            'phone':null,
+            'email':null,
+            'total':total,
+        }
+
+        var shippingInfo = {
+            'state':null,
+            'address':null,
+            'city':null,
+            'zipcode':null,
+        }
+
+        if(shipping != 'False'){
+            shippingInfo.state = form.state.value
+            shippingInfo.address = form.address.value
+            shippingInfo.city = form.city.value
+            shippingInfo.zipcode = form.zipcode.value
+        }
+
+        if(user == 'AnonymousUser'){
+            userFormData.name = form.name.value
+            userFormData.phone = form.phone.value
+            userFormData.email = form.email.value
+        }
+
+        var url = '/process_order/'
+        fetch(url, {
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({'form':userFormData, 'shipping':shippingInfo})
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data)
+            alert('Transaction Completed')
+
+            cart = {}
+            document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+
+
+            window.location.href = "{% url 'store' %}"
+        })
+
+    }
+
+</script>
+
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>

@@ -1,0 +1,272 @@
+{% extends "store/main.html" %}
+{% load static %}
+
+{% block title %}Bouncers - Store{% endblock title %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static '/css/products.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+
+
+
+<div class="productcontainer">
+    <div class="pagetop">
+        <a href='/' class="pageinfolight">
+            Home
+        </a> 
+        <i class="pageinfoicon fa-solid fa-angle-right"></i>
+        <p class="pageinfoaddress">
+            Products
+        </p>
+    </div>
+
+
+    <div class="productcontmain">
+        <div class="productmain-top">
+            <div class="productmaintop-total">
+                We have <p class='green'>{{totalproducts}} </p> items for you!
+            </div>
+            <div class="productmaintop-drop">
+                <div class="productmaindrop-down">
+                    <button class="dropbtn-pro"> 
+                        <i class="fi fi-rs-category"></i>
+                        <p>Categories</p>
+                        <i class="pro fa-solid fa-angle-down"></i>
+                    </button>
+                    <div class="dropdown-content-pro">
+                        <div class="column-pro">
+                            <a class='dropitems-pro dropitems-category' data-category="all_cats" value="all_cats" href="" >
+                                <p>All</p>
+                            </a>
+                            <a class='dropitems-pro dropitems-category' data-category='Loafers' value='loafers' href="">
+                                <p>Loafers</p>
+                            </a>
+                            <a class='dropitems-pro dropitems-category' data-category='Peshawari' value='peshawari' href="">
+                                <p>Peshawari Chappal</p>
+                            </a>
+                            <a class='dropitems-pro dropitems-category' data-category='Formal' value='formal' href="">
+                                <p>Formal Shoes</p>
+                            </a>
+                            <a class='dropitems-pro dropitems-category' data-category='Khussa' value='khussa' href="">
+                                <p>Khussa</p>
+                            </a>
+                            <a class='dropitems-pro dropitems-category' data-category='High Heels' value='heels' href="">
+                                <p>High Heels</p>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="productmaindrop-down">
+                    <div class="productmaindrop-down">
+                        <button class="dropbtn-pro"> 
+                            <i class="pro fi fi-rs-apps-sort"></i>
+                            <p class='sorting'>Sort by:</p>
+                            <i class="pro fa-solid fa-angle-down"></i>
+                        </button>
+                        <div class="dropdown-content-pro">
+                            <div class="column-pro">
+                                <a class='dropitems-pro dropitems-sortings'  value="oldest" href="?sort=oldest">
+                                    <p>Oldest</p>
+                                </a>
+                                <a class='dropitems-pro dropitems-sortings' value="latest" href="?sort=latest">
+                                    <p>Newest</p>
+                                </a>
+                                <a class='dropitems-pro dropitems-sortings' value="price_low" href="?sort=price_low">
+                                    <p>Price: Low to High</p>
+                                </a>
+                                <a class='dropitems-pro dropitems-sortings' value="price_high" href="?sort=price_high">
+                                    <p>Price: Hight to Low</p>
+                                </a>
+                                <a class='dropitems-pro dropitems-sortings' value="name_asc" href="?sort=name_asc">
+                                    <p>Name: A-Z</p>
+                                </a>
+                                <a class='dropitems-pro dropitems-sortings' value="name_desc" href="?sort=name_desc">
+                                    <p>Name: Z-A</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="productimp-main">
+            <div class="productimpmain-top" id='product-items'>
+                {% for product in products %}
+                <div class="productbox">
+                    <div class="productbox-top">
+                        <div class="productboxtop-image">
+                            <a href="#"><img class='product-img' src="{{product.imageURL}}" alt=""></a>
+                        </div>
+                        <div class="productboxtop-off">
+                            -{{product.percentoff|floatformat:0 }}%
+                        </div>
+                    </div>
+                    <div class="productbox-bot">
+                        <div class="productboxbot-text">
+                            <div class="productboxtext-category">
+                                {{product.category}}
+                            </div>
+                            <div class="productboxtext-name">
+                                <a href="#" class="productboxname-link">
+                                    {{product.name}} - {{product.color}}
+                                </a>
+                            </div>
+                            <div class="productboxtext-price">
+                                <div class="productboxprice-new">
+                                    £{{product.price}}
+                                </div>
+                                <div class="productboxprice-old">
+                                    £{{product.oldprice}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="productboxbot-buttons">
+                            <a href='#' class='productbox-btn' >
+                                <i class="productbox-icon fi fi-rs-heart"></i>
+                                <p class="productboxbtn-text">Wishlist</p>
+                            </a>
+                            <button data-product={{product.id}} data-action='add' class='productbox-btn update-cart' >
+                                <i class="productbox-icon fi fi-rs-shopping-cart"></i>
+                                <p class="productboxbtn-text">Cart</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                {% endfor %}
+            </div>
+
+            <div class="productimpman-pagination">
+                <span class="step-links">
+                    {% if product.paginator.num_pages > 1 %}
+                        {% if product.has_previous %}
+                            <a href="?page=1"><i class="footwearpagination fa-solid fa-chevron-left"></i></a>
+                        {% endif %}
+            
+                        {% for i in product.paginator.page_range %}
+                            {% if i == product.number %}
+                                <span class="footwearpagination page-current">{{ i }}</span>
+                            {% elif i == 1 and product.number > 3 %}
+                                {% if product.number > 3 %}
+                                    <a class='footwearpagination' href="?page=1">1</a>
+                                {% else %}
+                                    <span class="footwearpagination">1</span>
+                                {% endif %}
+                            {% elif i == product.paginator.num_pages and product.number < product.paginator.num_pages|add:"-2" %}
+                                <span class="footwearpagination">...</span>
+                                <a class='footwearpagination' href="?page={{ i }}">{{ i }}</a>
+                            {% elif i <= product.paginator.num_pages|add:"-2" and i >= product.number|add:"-2" %}
+                                <a class='footwearpagination' href="?page={{ i }}">{{ i }}</a>
+                            {% elif i >= product.paginator.num_pages|add:"-2" %}
+                                <a class='footwearpagination' href="?page={{ i }}">{{ i }}</a>
+                            {% endif %}
+                        {% endfor %}
+            
+                        {% if product.has_next %}
+                            <a id='footNPIcon' href="?page={{ product.paginator.num_pages }}"><i class="footwearpagination fa-solid fa-chevron-right"></i></a>
+                        {% endif %}
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdownButtons = document.querySelectorAll('.dropbtn-pro');
+        const productItems = document.querySelectorAll('.productbox');
+        const allProducts = Array.from(productItems);
+    
+        dropdownButtons.forEach(function(dropbtn) {
+            const dropdownContent = dropbtn.nextElementSibling;
+            const angleIcon = dropbtn.querySelector('.fa-angle-down');
+    
+            dropbtn.addEventListener('click', function(event) {
+                event.stopPropagation();
+                dropdownContent.classList.toggle('show');
+                angleIcon.classList.toggle('fa-angle-up');
+                angleIcon.classList.toggle('fa-angle-down');
+            });
+        });
+    
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.productmaindrop-down')) {
+                const dropdownContents = document.querySelectorAll('.dropdown-content-pro');
+                dropdownContents.forEach(function(dropdownContent) {
+                    dropdownContent.classList.remove('show');
+                    const angleIcon = dropdownContent.previousElementSibling.querySelector('.fa-angle-up');
+                    if (angleIcon) {
+                        angleIcon.classList.remove('fa-angle-up');
+                        angleIcon.classList.add('fa-angle-down');
+                    }
+                });
+            }
+        });
+    
+        const dropItems = document.querySelectorAll('.dropitems-pro');
+    
+        dropItems.forEach(function(dropItem) {
+            dropItem.addEventListener('click', function(event) {
+                event.preventDefault();
+                const category = dropItem.getAttribute('data-category');
+    
+                // Filter products by category
+                allProducts.forEach(function(productItem) {
+                    const productCategory = productItem.querySelector('.productboxtext-category').textContent.trim();
+                    if (category === 'All' || productCategory === category) {
+                        productItem.style.display = 'flex';
+                    } else {
+                        productItem.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+
+        const dropItems_sorting = document.querySelectorAll('.dropitems-sortings');
+    
+        dropItems_sorting.forEach(function(dropItems_sorting) {
+            dropItems_sorting.addEventListener('click', function(event) {
+                event.preventDefault();
+                const sortOption = dropItems_sorting.getAttribute('value');
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('sort', sortOption);
+                window.location.href = currentUrl;
+            });
+        });
+
+        const dropItems_category = document.querySelectorAll('.dropitems-category');
+    
+        dropItems_category.forEach(function(dropItems_category) {
+            dropItems_category.addEventListener('click', function(event) {
+                event.preventDefault();
+                const categoryOption = dropItems_category.getAttribute('value');
+                const currentUrl = new URL(window.location.href);
+                currentUrl.searchParams.set('category', categoryOption);
+                window.location.href = currentUrl;
+            });
+        });
+
+    })
+
+</script>
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>
+{% endblock content %}

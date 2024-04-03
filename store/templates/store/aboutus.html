@@ -1,0 +1,60 @@
+{% extends "store/main.html" %}
+{% load static %}
+
+{% block title %}Bouncers - About Us{% endblock title %}
+
+{% block content %}
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+
+
+<link rel="stylesheet" href="{% static '/css/aboutus.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+
+<div class="aboutcontainer">
+    <div class="pagetop">
+        <a href='/' class="pageinfolight">
+            Home
+        </a> 
+        <i class="pageinfoicon fa-solid fa-angle-right"></i>
+        <p class="pageinfoaddress">
+            AboutUs
+        </p>
+    </div>
+
+    <div class="aboutcontbottom">
+        <div class="bottomaboutteam">
+            <div class="aboutteamleft">
+                <div class="teamleftcont">
+                    <img src="{% static "/images/bouncers.png" %}" alt="">
+                </div>
+            </div>
+            <div class="aboutteamright">
+                <h1 class="teamrighthead">
+                    About Us
+                </h1>
+                <div class="teamrightinfo">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing
+                    elit. Ipsum ullam nulla eum accusamus odit cupiditate 
+                    iste quasi sed pariatur impedit recusandae qui, eos 
+                    voluptate neque illo corrupti commodi dolor. Ex nihil 
+                    nulla aliquam perspiciatis odio, ratione corrupti eius 
+                    rerum  <br> <br>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Maxime, sequi ad voluptas adipisci, expedita eos, 
+                    tenetur non deserunt delectus quod laudantium aperiam 
+                    odio excepturi vitae provident?
+                </div>
+                <a href='{% url "home" %}' class="teamrightmore">
+                    Learn More
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>
+
+{% endblock content %}

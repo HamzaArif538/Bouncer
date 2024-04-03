@@ -1,0 +1,164 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/footer.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+
+<div class="footercontainer">
+    <div class="footercont-top">
+        <div class="footerconttop-main">
+            <div class="footertopmain-logo">
+                <img src="{% static "/images/discount.png" %}" alt="">
+            </div>
+            <div class="footertopmain-deal">
+                Best Prices and Offers
+            </div>
+            <div class="footertopmain-info">
+                Great Deals Daily
+            </div>
+        </div>
+        <div class="footerconttop-main">
+            <div class="footertopmain-logo">
+                <img src="{% static "/images/delivery.png" %}" alt="">
+            </div>
+            <div class="footertopmain-deal">
+                Free Delivery
+            </div>
+            <div class="footertopmain-info">
+                Orders over £100
+            </div>
+        </div>
+        <div class="footerconttop-main">
+            <div class="footertopmain-logo">
+                <img src="{% static "/images/trusted.png" %}" alt="">
+            </div>
+            <div class="footertopmain-deal">
+                Trusted Brands
+            </div>
+            <div class="footertopmain-info">
+                Verified Suppliers
+            </div>
+        </div>
+        <div class="footerconttop-main">
+            <div class="footertopmain-logo">
+                <img src="{% static "/images/return.png" %}" alt="">
+            </div>
+            <div class="footertopmain-deal">
+                Easy Return
+            </div>
+            <div class="footertopmain-info">
+                Within 10 days
+            </div>
+        </div>
+        <div class="footerconttop-main">
+            <div class="footertopmain-logo">
+                <img src="{% static "/images/support.png" %}" alt="">
+            </div>
+            <div class="footertopmain-deal">
+                Customer Support
+            </div>
+            <div class="footertopmain-info">
+                24/7 Assistance
+            </div>
+        </div>
+    </div>
+
+
+    <div class="footercont-mid">
+        <div class="footercontmid-first">
+            <div class="footermidfirst-logo">
+                <img src="{% static "/images/bouncers.png" %}" alt="">
+                <div class="footerlogo-info">
+                    Your One stop shop to buy your favourite footwear
+                </div>
+            </div>
+            <div class="footermidfirst-info">
+                <div class="footermidinfo-cont">
+                    <img class="footermidinfo-icon" src="{% static "/images/location.png" %}" alt="">
+                    <p class="footermidinfo-info">
+                        <b>Address:</b> Manchester, United Kingdom
+                    </p>
+                </div>
+                <div class="footermidinfo-cont">
+                    <img class="footermidinfo-icon" src="{% static "/images/headset.png" %}" alt="">
+                    <p class="footermidinfo-info">
+                        <b>Call Us:</b> +44 568402 5496
+                    </p>
+                </div>
+                <div class="footermidinfo-cont">
+                    <img class="footermidinfo-icon" src="{% static "/images/mail.png" %}" alt="">
+                    <p class="footermidinfo-info">
+                        <b>Email:</b> bouncers123@gmail.com
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footercontmid-sec">
+            <div class="footercontsec-pages">
+                <div class="footercontsec-title">
+                    <p>Pages</p>
+                </div>
+                <div class="footercontsec-links">
+                    <ul class='footer-list_items'>
+                        <li class="footer-item {% if request.path == '/' %}active{% endif %}">
+                            <a href="/">Home</a>
+                        </li>
+                        <li class="footer-item {% if request.path == '/store/' %}active{% endif %}">
+                            <a href="{% url "store" %}">Store</a>
+                        </li>
+                        <li class="footer-item {% if request.path == '/aboutus/' %}active{% endif %}">
+                            <a href="{% url "aboutus" %}">About Us</a>
+                        </li>
+                        <li class="footer-item {% if request.path == '/contactus/' %}active{% endif %}">
+                            <a href="{% url "contactus" %}">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footercontsec-company">
+                <div class="footercontsec-title">
+                    <p>Company</p>
+                </div>
+                <div class="footercontsec-other">
+                    <div class="footersecother-first">
+                        <a href="/">Privacy Policy</a>
+                    </div>
+                    <div class="footercont-follow">
+                        <div class="footercontfollow-title">
+                            Follow Us
+                        </div>
+                        <ul class="footerfollow-links">
+                            <li class='footerlinks-li'>
+                                <a class='footerlinksli-a' href="">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class='footerlinks-li'>
+                                <a class='footerlinksli-a' href="">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class='footerlinks-li'>
+                                <a class='footerlinksli-a' href="">
+                                    <i class="fa-brands fa-tiktok"></i>
+                                </a>
+                            </li>
+                            <li class='footerlinks-li'>
+                                <a class='footerlinksli-a' href="">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>

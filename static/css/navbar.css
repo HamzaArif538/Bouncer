@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/* top line */
+
+.navcontainer{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+}
+
+.navconttop{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-line);
+    margin-top: 2px;
+    padding: 0 20px;
+}
+
+.navconttop .navconttop-first ul{
+    display: flex;
+    list-style: none;
+    margin: 1px 0 3px 0;
+    padding: 0;
+}
+
+.navconttop-first ul li a{
+    text-decoration: none;
+    margin: 0 3px;
+    font-size: 12px;
+    color: var(--color-font);
+    border-right: 1px solid var(--color-font);
+    padding-right: 5px;
+}
+
+.navconttop-first ul li .navcontfirst-last{
+    border-right: none;
+}
+
+.navconttop .navconttop-sec{
+    font-size: 12px;
+    color: var(--color-font);
+    margin: 5px 0;
+}
+
+.navconttop .navconttop-third{
+    display: flex;
+    font-size: 12px;
+    color: var(--color-font);
+    margin: 5px 0;
+}
+
+.navconttop-third .navtopthird-num{
+    color: var(--color-primary);
+}
+
+
+.navcontmid{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    align-items: center;
+    border-bottom: 1px solid var(--color-line);
+
+}
+
+.navcontmid .navmid-logo a img{
+    height: 50px;
+}
+
+.navcontmid .navmid-search{
+    border: 2px solid #58d49a;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.navmid-search .search-container .searchbox{
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 300px;
+}
+
+.search-container button{
+    border: none;
+    background-color: white;
+    color: var(--color-font);
+}
+
+.navmid-icons{
+    display: flex;
+}
+
+.navmid-icons .navmid-main{
+    display: flex;
+    margin: 0 0 0 20px;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    color: var(--color-font);
+
+}
+
+.navmid-main .navmidmain-1st{
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+}
+
+.navmidmain-1st .navmain1st-num{
+    font-size: 14px;
+    position: relative;
+    bottom: 13px;
+    right: 8px;
+    z-index: 2;
+    background-color: var(--color-primary);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+.navmid-main .navmidmain-2nd{
+    position: relative;
+    right: 7px;
+}
+
+
+
+
+.navcontbot{
+    padding: 10px 20px;
+    /* margin: 0px 0; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-line);
+}
+
+.dropbtn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 20px;
+    border-radius: 5px;
+}
+
+.dropbtn i{
+    font-size: 18px;
+}
+
+.dropbtn .smallicon{
+    font-size: 13px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    transition: 0.5s;
+    background-color: #319968;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 160px;
+    z-index: 11;
+    width: 270px;
+    border: 1px solid #58d49a;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+    border-radius: 5px;
+    width: 215px;
+    height: 25px;
+    transition: 0.5s;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    box-shadow: 1px 1px 3px 1px rgba(202, 202, 202, 0.5);
+    border: 1px solid #58d49a;
+    color: var(--color-primary);
+}
+
+.show{
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+/* .dropdown:hover .dropdown-content {
+    display: block;
+} */
+
+/* Columns */
+.column {
+    padding: 10px;
+}
+
+.column .dropitems{
+    display: flex;
+    align-items: center;
+}
+.dropitems img{
+    height: 20px;
+    margin-right: 10px;
+}
+
+.dropitems .dropitem-gender{
+    position: absolute;
+    right: 19px;
+    font-size: 12px;
+    color: var(--color-font);
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.navcontbot-navbar .navbar-list_items{
+    display: flex;
+    list-style: none;
+}
+
+.navbar-list_items li a{
+    text-decoration: none;
+    margin: 0 10px;
+    color: var(--color-font);
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.navbar-list_items li a:hover{
+    color: var(--color-primary);
+}
+
+.navbar-list_items li.active a{
+    color: var(--color-primary);
+}
+
+
+
+.navcontbot-help{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.navcontbot-help .navbothelp-first i{
+    font-size: 30px;
+}
+
+.navcontbot-help .navbothelp-2nd .navhelp2nd-top{
+    color: var(--color-primary);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.navcontbot-help .navbothelp-2nd .navhelp2nd-bot{
+    color: var(--color-font);
+}

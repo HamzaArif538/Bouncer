@@ -1,0 +1,216 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static '/css/navbar.css' %}">
+<link rel="stylesheet" href="{% static '/css/colors.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script type='text/javascript' src="{% static "js/main.js" %}"></script>
+
+
+<div class="navcontainer">
+    <div class="navconttop">
+        <div class="navconttop-first">
+            <ul>
+                <li><a href="">About Us</a></li>
+                {% comment %} <li><a href="">My Account</a></li>  {% endcomment %}
+                <li><a href="">Wishlist</a></li>
+                <li><a class='navcontfirst-last' href="">Order Tracking</a></li>
+            </ul>
+        </div>
+        <div class="navconttop-sec">
+            Super Value Deals - Avail the Discounts Now
+        </div>
+        <div class="navconttop-third">
+            <div class="navtopthird-info">
+                Need help? Call Us: 
+            </div>
+            <div class="navtopthird-num">
+                +44 568402 5496
+            </div>
+        </div>
+    </div>
+
+
+    <div class="navcontmid">
+        <div class="navmid-logo">
+            <a href="/">
+                <img src="{% static "/images/bouncers.png" %}" alt="">
+            </a>
+        </div>
+        <div class="navmid-search">
+            <div class="search-container">
+                <input class='searchbox' type="text" placeholder="Search for items..">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+        <div class="navmid-icons">
+            <a href='' class="navmid-main">
+                <div class="navmidmain-1st">
+                    <i class="fa-regular fa-heart"></i>
+                    <p class='navmain1st-num' >0</p>
+                </div>
+                <div class="navmidmain-2nd">
+                    Wishlist
+                </div>
+            </a>
+            <a href='{% url "cart" %}' class="navmid-main">
+                <div class="navmidmain-1st">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p class='navmain1st-num' >{{cartItems}}</p>
+                </div>
+                <div class="navmidmain-2nd">
+                    Cart
+                </div>
+            </a>
+
+            {% comment %} Below is the code to show my Account {% endcomment %}
+            {% comment %} <div class="navmid-main">
+                <div class="navmidmain-1st">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+                <div class="navmidmain-2nd">
+                    Account
+                </div>
+            </div> {% endcomment %}
+
+        </div>
+    </div>
+
+
+    <div class="navcontbot">
+        <div class="navcontbot-1st">
+            <div class="dropdown">
+                <button class="dropbtn"> 
+                    <i class="smallicon fa-solid fa-border-all"></i>
+                    <p>Browse All Categories</p>
+                    <i class="smallicon fa-solid fa-angle-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <div class="column">
+                        <a class='dropitems' href="#">
+                            <img src="{% static "/images/loafer.png" %}" alt=""> 
+                            <p>Loafers</p>
+                            <p class="dropitem-gender">
+                                Men
+                            </p>
+                        </a>
+                        <a class='dropitems' href="#">
+                            <img src="{% static "/images/peshawari.png" %}" alt=""> 
+                            <p>Peshawari Chappal</p>
+                            <p class="dropitem-gender">
+                                Men
+                            </p>
+                        </a>
+                        <a class='dropitems' href="#">
+                            <img src="{% static "/images/dress-shoes.png" %}" alt=""> 
+                            <p>Dress Shoes</p>
+                            <p class="dropitem-gender">
+                                Men
+                            </p>
+                        </a>
+                        <a class='dropitems' href="#">
+                            <img src="{% static "/images/khussa.png" %}" alt=""> 
+                            <p>Khussa</p>
+                            <p class="dropitem-gender">
+                                Women
+                            </p>
+                        </a>
+                        <a class='dropitems' href="#">
+                            <img src="{% static "/images/heels.png" %}" alt=""> 
+                            <p>High Heels</p>
+                            <p class="dropitem-gender">
+                                Women
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navcontbot-navbar">
+            <ul class='navbar-list_items'>
+                <li class="navbar-item {% if request.path == '/' %}active{% endif %}">
+                    <a href="/">Home</a>
+                </li>
+                <li class="navbar-item {% if request.path == '/store/' %}active{% endif %}">
+                    <a href="{% url "store" %}">Store</a>
+                </li>
+                <li class="navbar-item {% if request.path == '/aboutus/' %}active{% endif %}">
+                    <a href="{% url "aboutus" %}">About Us</a>
+                </li>
+                <li class="navbar-item {% if request.path == '/contactus/' %}active{% endif %}">
+                    <a href="{% url "contactus" %}">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <div class="navcontbot-help">
+            <div class="navbothelp-first">
+                <i class="fa-solid fa-headphones-simple"></i>
+            </div>
+            <div class="navbothelp-2nd">
+                <div class="navhelp2nd-top">
+                    +44 568402 5496
+                </div>
+                <div class="navhelp2nd-bot">
+                    24/7 Support Center
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle dropdown on button click
+        const dropbtn = document.querySelector('.dropbtn');
+    const dropdownContent = document.querySelector('.dropdown-content');
+    const angleIcon = dropbtn.querySelector('.fa-angle-down');
+
+    dropbtn.addEventListener('click', function(event) {
+        event.stopPropagation();
+        dropdownContent.classList.toggle('show');
+        angleIcon.classList.toggle('fa-angle-up');
+        angleIcon.classList.toggle('fa-angle-down');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!event.target.closest('.dropdown')) {
+            dropdownContent.classList.remove('show');
+            angleIcon.classList.remove('fa-angle-up');
+            angleIcon.classList.add('fa-angle-down');
+        }
+    });
+    
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            var dropdowns = document.querySelectorAll('.dropdown-content');
+            dropdowns.forEach(function(dropdown) {
+                if (dropdown.style.display === 'block' && !event.target.closest('.dropdown')) {
+                    dropdown.style.display = 'none';
+                    var angleIcon = dropdown.previousElementSibling.querySelector('.fa-angle-up');
+                    if (angleIcon) {
+                        angleIcon.classList.remove('fa-angle-up');
+                        angleIcon.classList.add('fa-angle-down');
+                    }
+                }
+            });
+        });
+
+        // Class Active
+        $(document).ready(function () {
+            $(".navbar-list_items li a").click(function () {
+                $(".navbar-list_items li").removeClass("active");
+                $(this).parent().addClass("active");
+            });
+        });
+
+    });
+    
+
+    
+    
+
+</script>
+
+<script type='text/javascript' src="{% static "js/cart.js" %}"></script>
