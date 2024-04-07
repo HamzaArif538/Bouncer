@@ -254,8 +254,9 @@
 
 .productbox-bot{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     padding: 0px 10px 20px 10px;
+    justify-content: space-between;
     
 }
 
@@ -305,7 +306,8 @@
 
 .productboxbot-buttons{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: flex-end; */
+    align-items: flex-end;
     flex-wrap: wrap;
 }
 
